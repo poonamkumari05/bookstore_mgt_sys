@@ -1,0 +1,163 @@
+/* ===== PAGE ===== */
+.container {
+  padding: 2rem;
+  background: #EEEEEE;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== HEADING ===== */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #213C51;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== FORM ===== */
+.form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
+
+.input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #6594B1;
+}
+
+/* ===== BUTTON ===== */
+.submitBtn {
+  grid-column: span 3;
+  padding: 10px;
+  background: #213C51;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background: #6594B1;
+}
+
+/* ===== BOOK GRID ===== */
+.bookList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== BOOK CARD ===== */
+.card {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* top accent */
+.card::before {
+  content: "";
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #213C51, #6594B1, #DDAED3);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== TEXT ===== */
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #213C51;
+  margin-bottom: 6px;
+}
+
+.price {
+  color: #6594B1;
+  font-weight: 500;
+}
+
+.stock {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* specific buttons */
+.editBtn {
+  background: #6594B1;
+  color: white;
+}
+
+.editBtn:hover {
+  background: #213C51;
+}
+
+.deleteBtn {
+  background: #ff6b6b;
+  color: white;
+}
+
+.deleteBtn:hover {
+  background: #e03131;
+}
+
+.priceBtn {
+  background: #DDAED3;
+}
+
+.priceBtn:hover {
+  background: #c98bbf;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .submitBtn {
+    grid-column: span 1;
+  }
+}

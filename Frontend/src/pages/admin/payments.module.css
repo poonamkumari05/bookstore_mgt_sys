@@ -1,0 +1,67 @@
+/* ===== CONTAINER ===== */
+.container {
+  padding: 2rem;
+  background: #EEEEEE;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== HEADING ===== */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #213C51;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== PAYMENT LIST ===== */
+.paymentList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.2rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== TEXT ===== */
+.orderId {
+  font-weight: 600;
+  color: #213C51;
+}
+
+.amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6594B1;
+  margin-top: 5px;
+}
+
+.status {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+/* ===== STATUS COLORS ===== */
+.success {
+  color: green;
+}
+
+.pending {
+  color: orange;
+}
+
+.failed {
+  color: red;
+}

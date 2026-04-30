@@ -1,0 +1,94 @@
+/* ===== ROOT ===== */
+.container {
+  padding: 2rem;
+  background: #EEEEEE;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #213C51;
+  margin-bottom: 0.4rem;
+}
+
+.subheading {
+  font-size: 0.95rem;
+  color: #6594B1;
+  margin-bottom: 2rem;
+}
+
+/* ===== LOADING ===== */
+.loading {
+  text-align: center;
+  margin-top: 3rem;
+  color: #213C51;
+  font-weight: 600;
+}
+
+/* ===== CARD GRID ===== */
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle top accent line */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #213C51, #6594B1, #DDAED3);
+}
+
+/* hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== CARD TEXT ===== */
+.card h3 {
+  font-size: 1rem;
+  color: #6594B1;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #213C51;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.2rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 1.4rem;
+  }
+}

@@ -1,0 +1,107 @@
+.navbar {
+  /* ✅ CORE FIX: Keeps navbar at the top */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures it stays above all other elements */
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem; /* Adjusted for better spacing */
+  height: 70px;    /* Fixed height matches the App.jsx calculation */
+  
+  /* Styling */
+  background: #1e293b;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds depth on scroll */
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  color: #f8fafc;
+}
+
+.searchBox {
+  display: flex;
+  gap: 8px;
+  flex: 0 1 400px; /* Allows search box to grow but not overflow */
+}
+
+.searchBox input {
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #334155;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchBox input:focus {
+  border-color: #6594B1;
+  background: #1e293b;
+}
+
+.searchBox button {
+  background: #6594B1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.searchBox button:hover {
+  background: #4a7a96; /* Darker shade for better feedback */
+  transform: translateY(-1px);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navLinks button {
+  background: transparent;
+  border: none;
+  color: #cbd5e1; /* Slightly muted for better hierarchy */
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navLinks button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Specific styling for the logout or primary actions */
+.navLinks button:last-child {
+  color: #ef4444; /* Subtle red for logout */
+}
+
+.navLinks button:last-child:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Responsive Handling */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+  .searchBox {
+    display: none; /* Usually hide search or move to a toggle on mobile */
+  }
+}

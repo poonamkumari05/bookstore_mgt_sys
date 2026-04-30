@@ -1,0 +1,317 @@
+/* ===== MAIN LAYOUT ===== */
+.checkoutContainer {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  background: #EEEEEE;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== LEFT SIDE ===== */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== PAGE TITLE ===== */
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #213C51;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== CARD HEADER ===== */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.cardHeader h3 {
+  font-size: 1.1rem;
+  color: black
+}
+
+/* ===== ADDRESS GRID ===== */
+.addressGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* ===== ADDRESS CARD ===== */
+.addressCard {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addressCard:hover {
+  border-color: #6594B1;
+  background: #f2f7fb;
+}
+
+.selectedCard {
+  border-color: #213C51;
+  background: #e8f1f6;
+  box-shadow: 0 4px 10px rgba(33, 60, 81, 0.15);
+}
+
+/* ===== ADDRESS TEXT ===== */
+.addressInfo strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #213C51;
+}
+
+.addressInfo p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ===== ADDRESS ACTIONS ===== */
+.addressActions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.editIconBtn,
+.deleteIconBtn {
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.editIconBtn {
+  color: #213C51;
+}
+
+.editIconBtn:hover {
+  background: #DDAED3;
+}
+
+.deleteIconBtn {
+  color: red;
+}
+
+.deleteIconBtn:hover {
+  background: #ffe5e5;
+}
+
+/* ===== ADD BUTTON ===== */
+.addBtn {
+  border: 1px solid #213C51;
+  color: #213C51;
+  background: transparent;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  background: #213C51;
+  color: white;
+}
+
+/* ===== FORM ===== */
+.newAddressForm {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.formGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.inputField {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #6594B1;
+}
+
+/* ===== FORM BUTTONS ===== */
+.formActions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+.saveAddrBtn {
+  background: #213C51;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.saveAddrBtn:hover {
+  background: #6594B1;
+}
+
+.cancelBtn {
+  background: #ddd;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #bbb;
+}
+
+/* ===== ITEMS LIST ===== */
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== SINGLE ITEM ===== */
+.reviewItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #EEEEEE;
+  padding: 10px 0;
+}
+
+/* ===== LEFT SIDE ===== */
+.itemMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itemName {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #213C51;
+}
+
+.itemQty {
+  font-size: 0.85rem;
+  color: #6594B1;
+}
+
+/* ===== RIGHT SIDE ===== */
+.itemPrice {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #213C51;
+  font-weight: 500;
+}
+
+.itemPrice strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #213C51;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+/* ===== SUMMARY ===== */
+.summaryCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.totalRow {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  color: #213C51;
+}
+
+.freeText {
+  color: green;
+}
+
+/* ===== CHECKOUT BUTTON ===== */
+.checkoutBtn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px;
+  background: #213C51;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkoutBtn:hover {
+  background: #6594B1;
+}
+
+.checkoutBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ===== ERROR ===== */
+.errorMsg {
+  background: #ffe5e5;
+  color: red;
+  padding: 10px;
+  border-left: 4px solid red;
+  margin-bottom: 1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .checkoutContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}

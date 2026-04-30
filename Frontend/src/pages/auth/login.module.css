@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f3f4f6;
+  position: relative;
+}
+
+/* ✅ CORNER LOGO */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* FORM BOX */
+.formBox {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ROLE SWITCH */
+.roleSwitch {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.roleBtn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e5e7eb;
+  color:#213C51;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.activeRole {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #213C51;
+  color: white;
+  cursor: pointer;
+}
+
+/* INPUT */
+.input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+/* BUTTON */
+.button {
+  width: 100%;
+  padding: 10px;
+  background: #213C51;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background: #1a2e45;
+}
+
+/* REGISTER TEXT */
+.registerText {
+  margin-top: 15px;
+  
+}
+.link {
+  color: #213C51;
+  text-decoration: none;
+  font-weight: bold;
+}
+.link:hover {
+  text-decoration: none;
+  color: #1a2e45;
+}

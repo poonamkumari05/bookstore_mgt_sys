@@ -1,0 +1,92 @@
+.homeContainer {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  background: #EEEEEE;
+}
+
+/* CARD */
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: 0.2s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(33, 60, 81, 0.1);
+}
+
+/* IMAGE */
+.bookImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.card h3 {
+  font-size: 1rem;
+  color: #213C51;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-weight: bold;
+  color: #6594B1;
+}
+
+.stock {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* BUTTONS */
+.cartBtn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background: #6594B1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cartBtn:hover {
+  background: #213C51;
+}
+
+.buyBtn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+  background: #DDAED3;
+  color: #213C51;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buyBtn:hover {
+  background: #c892c0;
+}
+
+/* DISABLED */
+.card button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  margin-top: 50px;
+}

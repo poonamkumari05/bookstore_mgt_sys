@@ -56,7 +56,9 @@ jobs:
       # 🔹 Generate Prisma Client
       - name: Generate Prisma Client
         working-directory: Backend
-        run: npx prisma generate
+        run: |
+          chmod +x node_modules/.bin/prisma
+          npx prisma generate
 
       # 🔥 Create FINAL deployable folder (IMPORTANT FIX)
 

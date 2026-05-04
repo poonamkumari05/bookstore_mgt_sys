@@ -66,6 +66,7 @@ jobs:
         run: |
           mkdir deploy
           cp -r Backend/. deploy/
+          chmod +x deploy/node_modules/.bin/prisma
           mkdir -p deploy/public
           cp -r Frontend/dist/. deploy/public/
  

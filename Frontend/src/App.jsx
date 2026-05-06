@@ -24,6 +24,7 @@ import AdminPayments from "./pages/admin/payments";
 // COMPONENTS
 import PrivateRoute from "./components/privateRoutes";
 import Navbar from "./components/navbar";
+import Chatbot from "./components/chatbot";
 
 function App() {
   const { user } = useAuth();
@@ -157,6 +158,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
+      {/*  CHATBOT: Always available at the bottom right */}
+      {user && <Chatbot />}
     </BrowserRouter>
   );
 }

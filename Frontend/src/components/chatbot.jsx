@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import styles from "./Chatbot.module.css";
+import styles from "./chatbot.module.css";
 
 function Chatbot() {
   const [message, setMessage] = useState("");

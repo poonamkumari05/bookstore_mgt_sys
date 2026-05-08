@@ -1,11 +1,21 @@
 /**
- * ✅ Format price with Indian Rupee Symbol and Commas
- * Handles strings, numbers, and null values safely.
- * Example: 1500.5 -> ₹1,500.50
+ * ============================================
+ * ✅ UI / FORMATTER HELPERS
+ * Online Bookstore Management System
+ * ============================================
  */
-export const formatPrice = (price) => {
+
+/**
+ * ✅ Format Price in Indian Rupees
+ * Example:
+ * 1500 -> ₹1,500.00
+ */
+export const formatPrice = (price = 0) => {
   const num = Number(price);
-  if (isNaN(num) || num === 0) return "₹0.00";
+
+  if (isNaN(num) || num < 0) {
+    return "₹0.00";
+  }
 
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -16,50 +26,148 @@ export const formatPrice = (price) => {
 };
 
 /**
- * ✅ Capitalize first letter
- * Example: "pending" -> "Pending"
+ * ✅ Capitalize First Letter
+ * Example:
+ * "pending" -> "Pending"
  */
-export const capitalize = (text) => {
-  if (!text) return "";
+export const capitalize = (text = "") => {
+  if (!text.trim()) return "";
+
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
 
 /**
- * ✅ Format order status nicely for UI
- * Handles underscores and cases.
- * Example: "out_for_delivery" -> "Out For Delivery"
+ * ✅ Format Status for Better UI
+ * Example:
+ * "out_for_delivery" -> "Out For Delivery"
  */
-export const formatStatus = (status) => {
-  if (!status) return "Unknown";
+export const formatStatus = (status = "") => {
+  if (!status.trim()) {
+    return "Unknown";
+  }
 
   return status
     .toLowerCase()
-    .split(/[_\s]+/) // handles both underscores and spaces
+    .replace(/[_-]+/g, " ")
+    .split(" ")
     .map((word) => capitalize(word))
     .join(" ");
 };
 
 /**
- * ✅ Status with Icon and Theme-ready Strings
- * Use this in your Order cards for professional visual feedback.
+ * ✅ Get Status UI Details
+ * Returns:
+ * - label
+ * - className
+ * - color
+ * - icon
  */
-export const getStatusUI = (status) => {
-  const s = status?.toLowerCase() || "";
-  const label = formatStatus(status);
+export const getStatusUI = (status = "") => {
+  const normalized = status.toLowerCase().trim();
 
-  switch (s) {
-    case "pending":
-      return { label: `⏳ ${label}`, class: "status_pending", color: "#f39c12" };
-    case "confirmed":
-    case "processing":
-      return { label: `⚙️ ${label}`, class: "status_processing", color: "#3498db" };
-    case "shipped":
-      return { label: `🚚 ${label}`, class: "status_shipped", color: "#9b59b6" };
-    case "delivered":
-      return { label: `✅ ${label}`, class: "status_delivered", color: "#27ae60" };
-    case "cancelled":
-      return { label: `❌ ${label}`, class: "status_cancelled", color: "#e74c3c" };
-    default:
-      return { label: label, class: "status_default", color: "#95a5a6" };
+  const statusMap = {
+    pending: {
+      label: "Pending",
+      icon: "⏳",
+      className: "status_pending",
+      color: "#f39c12",
+    },
+
+    confirmed: {
+      label: "Confirmed",
+      icon: "✅",
+      className: "status_confirmed",
+      color: "#3498db",
+    },
+
+    processing: {
+      label: "Processing",
+      icon: "⚙️",
+      className: "status_processing",
+      color: "#3498db",
+    },
+
+    shipped: {
+      label: "Shipped",
+      icon: "🚚",
+      className: "status_shipped",
+      color: "#9b59b6",
+    },
+
+    delivered: {
+      label: "Delivered",
+      icon: "🎉",
+      className: "status_delivered",
+      color: "#27ae60",
+    },
+
+    cancelled: {
+      label: "Cancelled",
+      icon: "❌",
+      className: "status_cancelled",
+      color: "#e74c3c",
+    },
+  };
+
+  const current =
+    statusMap[normalized] || {
+      label: formatStatus(status),
+      icon: "ℹ️",
+      className: "status_default",
+      color: "#95a5a6",
+    };
+
+  return {
+    ...current,
+    fullLabel: `${current.icon} ${current.label}`,
+  };
+};
+
+/**
+ * ✅ Truncate Long Text
+ * Example:
+ * truncateText("Hello World", 5)
+ * -> "Hello..."
+ */
+export const truncateText = (text = "", limit = 50) => {
+  if (text.length <= limit) {
+    return text;
   }
+
+  return `${text.slice(0, limit)}...`;
+};
+
+/**
+ * ✅ Format Date
+ * Example:
+ * 2026-05-08 -> 08 May 2026
+ */
+export const formatDate = (date) => {
+  if (!date) return "Invalid Date";
+
+  try {
+    return new Date(date).toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  } catch (error) {
+    return "Invalid Date";
+  }
+};
+
+/**
+ * ✅ Generate User Initials
+ * Example:
+ * "Poonam Kumari" -> "PK"
+ */
+export const getInitials = (name = "") => {
+  if (!name.trim()) return "";
+
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
 };

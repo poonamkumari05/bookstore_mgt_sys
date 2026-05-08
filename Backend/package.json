@@ -6,7 +6,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "chmod +x ./node_modules/.bin/prisma && npx prisma db push && node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

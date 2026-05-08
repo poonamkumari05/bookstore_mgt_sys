@@ -1,5 +1,5 @@
 const prisma = require("../../config/prisma");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   try {

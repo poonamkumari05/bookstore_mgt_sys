@@ -18,6 +18,7 @@ app.use("/api/cart", require("./routes/cartRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/payments", require("./routes/paymentRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
+app.use("/api/chat", require("./routes/chatRoutes"));
 app.get("/", (req, res) => {
   res.send("Welcome to the Online Bookstore Management System API");
 });

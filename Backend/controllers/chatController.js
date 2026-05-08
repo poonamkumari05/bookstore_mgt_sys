@@ -1,111 +1,115 @@
-const { chatWithGemini } = require("../services/geminiService");
 const { PrismaClient } = require("@prisma/client");
+const { chatWithGemini } = require("../services/geminiService");
 
 const prisma = new PrismaClient();
 
-// 🧠 Intent detection (important for optimization)
-const detectIntent = (msg) => {
-  const text = msg.toLowerCase();
-
-  if (text.includes("under") || text.includes("price")) return "PRICE";
-  if (text.includes("author")) return "AUTHOR";
-  if (text.includes("book")) return "BOOK";
-
-  return "AI";
-};
+const greetings = [
+  "hi",
+  "hello",
+  "hey",
+  "hii",
+  "good morning",
+  "good evening",
+];
 
 const chatController = async (req, res) => {
   try {
     const { message } = req.body;
 
-    if (!message) {
-      return res.json({ reply: "Please type something 🙂" });
+    if (!message || message.trim() === "") {
+      return res.json({
+        reply: "Please type something 🙂",
+      });
     }
 
-    const cleanMsg = message.trim().toLowerCase();
-    const intent = detectIntent(cleanMsg);
+    const cleanMsg = message.toLowerCase().trim();
 
-    // 🟢 1. PRICE SEARCH (DB FIRST)
-    if (intent === "PRICE") {
-      const priceMatch = cleanMsg.match(/\d+/);
+    // ✅ Greeting Handling
+    if (greetings.includes(cleanMsg)) {
+      return res.json({
+        reply:
+          "Hello 👋 Welcome to Online Bookstore. Ask me about books, authors, prices, or recommendations 📚",
+      });
+    }
 
-      if (priceMatch) {
-        const price = Number(priceMatch[0]);
+    // ✅ 1. Search Books by Name
+    const books = await prisma.books.findMany({
+      where: {
+        book_name: {
+          contains: cleanMsg,
+        },
+      },
+      take: 5,
+    });
 
-        const books = await prisma.books.findMany({
-          where: {
-            price: { lte: price },
+    if (books.length > 0) {
+      return res.json({
+        reply: books
+          .map((b, i) => `${i + 1}. ${b.book_name} - ₹${b.price}`)
+          .join("\n"),
+      });
+    }
+
+    // ✅ 2. Search Authors
+    const authors = await prisma.book_authors.findMany({
+      where: {
+        author: {
+          author_name: {
+            contains: cleanMsg,
           },
-          take: 5,
-        });
+        },
+      },
+      include: {
+        author: true,
+        book: true,
+      },
+      take: 5,
+    });
 
-        if (books.length > 0) {
-          return res.json({
-            reply: books
-              .map((b, i) => `${i + 1}. ${b.book_name} - ₹${b.price}`)
-              .join("\n"),
-          });
-        }
-      }
+    if (authors.length > 0) {
+      return res.json({
+        reply: authors
+          .map(
+            (a, i) =>
+              `${i + 1}. ${a.book.book_name} by ${a.author.author_name}`
+          )
+          .join("\n"),
+      });
     }
 
-    // 🟢 2. BOOK SEARCH (DB FIRST)
-    if (intent === "BOOK") {
-      const keyword = cleanMsg.split(" ").pop();
+    // ✅ 3. Price Search
+    const priceMatch = cleanMsg.match(/\d+/);
 
-      const books = await prisma.books.findMany({
+    if (priceMatch) {
+      const price = Number(priceMatch[0]);
+
+      const cheapBooks = await prisma.books.findMany({
         where: {
-          book_name: {
-            contains: keyword,
+          price: {
+            lte: price,
           },
         },
         take: 5,
       });
 
-      if (books.length > 0) {
+      if (cheapBooks.length > 0) {
         return res.json({
-          reply: books
+          reply: cheapBooks
             .map((b, i) => `${i + 1}. ${b.book_name} - ₹${b.price}`)
             .join("\n"),
         });
       }
     }
 
-    // 🟢 3. AUTHOR SEARCH (DB FIRST)
-    if (intent === "AUTHOR") {
-      const keyword = cleanMsg.split(" ").pop();
-
-      const results = await prisma.book_authors.findMany({
-        where: {
-          author: {
-            author_name: {
-              contains: keyword, // ❌ removed mode (fixed Prisma error)
-            },
-          },
-        },
-        include: { book: true, author: true },
-        take: 5,
-      });
-
-      if (results.length > 0) {
-        return res.json({
-          reply: results
-            .map(
-              (r, i) =>
-                `${i + 1}. ${r.book.book_name} by ${r.author.author_name}`
-            )
-            .join("\n"),
-        });
-      }
-    }
-
-    // 🔵 4. AI FALLBACK (ONLY WHEN DB FAILS)
+    // ✅ 4. Gemini Fallback
     const aiReply = await chatWithGemini(cleanMsg);
 
-    return res.json({ reply: aiReply });
-
+    return res.json({
+      reply: aiReply,
+    });
   } catch (error) {
-    console.error("Controller Error 👉", error);
+    console.error("CHAT ERROR 👉", error);
+
     return res.status(500).json({
       reply: "Server error",
     });
